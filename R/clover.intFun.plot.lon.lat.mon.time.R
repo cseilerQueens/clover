@@ -4,11 +4,10 @@
 #' @export
 
 
-clover.intFun.plot.lon.lat.mon.time <- function(ncFileName, data, v, long_name, units, time) {
+clover.intFun.plot.lon.lat.mon.time <- function(ncFileName, data, v, long_name, units, time, dim_values) {
   # Annual values
   data.yr <- data[, , 13, ]
 
-  nyears <- ncol(data.yr)
   r <- terra::rast(data.yr)
   r <- terra::t(r)
   r <- terra::flip(r)
@@ -26,7 +25,7 @@ clover.intFun.plot.lon.lat.mon.time <- function(ncFileName, data, v, long_name, 
   weighted <- r * area
 
   # Weighted global sum
-  globalSum <- terra::global(weighted, "sum")$sum
+  globalSum <- terra::global(weighted, "sum", na.rm = TRUE)$sum
 
   # Global mean
   globalMean <- globalSum / totalArea
@@ -54,7 +53,7 @@ clover.intFun.plot.lon.lat.mon.time <- function(ncFileName, data, v, long_name, 
   weighted <- monthly.clim * area
 
   # Weighted global sum
-  globalSeasonalMean <- terra::global(weighted, "sum")$sum / totalArea
+  globalSeasonalMean <- terra::global(weighted, "sum", na.rm = TRUE)$sum / totalArea
 
   # Extract different latitudinal bands to plot seasonal cycle
   ext_arctic <- terra::ext(-180, 180, 66.5, 90)
@@ -77,7 +76,7 @@ clover.intFun.plot.lon.lat.mon.time <- function(ncFileName, data, v, long_name, 
     area <- terra::cellSize(region, unit = "m")
     totalArea <- terra::global(area, "sum")$sum
     weighted <- region * area
-    seasonalMean <- terra::global(weighted, "sum")$sum / totalArea
+    seasonalMean <- terra::global(weighted, "sum", na.rm = TRUE)$sum / totalArea
     regional.seasonal.cycles[[i]] <- seasonalMean
     rm(region, area, totalArea, weighted, seasonalMean)
   }

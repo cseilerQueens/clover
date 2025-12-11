@@ -10,7 +10,8 @@ clover.intFun.plot.lon.lat.mon.time(
   v,
   long_name,
   units,
-  time
+  time,
+  dim_values
 )
 }
 \description{

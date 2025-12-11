@@ -4,7 +4,7 @@
 #' @export
 
 
-clover.intFun.plot.lon.lat.time <- function(ncFileName, data, v, long_name, units, time) {
+clover.intFun.plot.lon.lat.time <- function(ncFileName, data, v, long_name, units, time, dim_values) {
   # Annual values
   data.yr <- data
 

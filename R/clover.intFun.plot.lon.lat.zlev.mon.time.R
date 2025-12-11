@@ -46,7 +46,6 @@ clover.intFun.plot.lon.lat.zlev.mon.time <- function(ncFileName, data, v, long_n
     xlab = "Latitude", ylab = "Height (m)",
     main = "DJF"
   )
-  # abline(v = c(66.5, 23.5, -23.5, -66.5), lty = 3)
   grid()
 
   fields::image.plot(lat, zlev, jja.zonal,
@@ -55,16 +54,14 @@ clover.intFun.plot.lon.lat.zlev.mon.time <- function(ncFileName, data, v, long_n
     xlab = "Latitude", ylab = "Height (m)",
     main = "JJA"
   )
-  # abline(v = c(66.5, 23.5, -23.5, -66.5), lty = 3)
   grid()
-
 
   mtext(my.title,
     side = 3, # top of the figure
     outer = TRUE,
     line = 1, # adjust vertical spacing
     font = 2
-  ) # bold
+  )
 
   dev.off()
 }

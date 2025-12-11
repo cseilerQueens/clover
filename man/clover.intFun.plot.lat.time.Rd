@@ -4,7 +4,15 @@
 \alias{clover.intFun.plot.lat.time}
 \title{Plot CLIMBER-X output}
 \usage{
-clover.intFun.plot.lat.time(ncFileName, data, v, long_name, units, time)
+clover.intFun.plot.lat.time(
+  ncFileName,
+  data,
+  v,
+  long_name,
+  units,
+  time,
+  dim_values
+)
 }
 \description{
 Internal function used in clover.plot()

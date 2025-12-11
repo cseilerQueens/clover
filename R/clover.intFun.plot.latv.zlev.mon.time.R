@@ -3,7 +3,7 @@
 #' @description Internal function used in clover.plot()
 #' @export
 
-clover.intFun.plot.latv.zlev.mon.time <- function(ncFileName, data, v, long_name, units, time, dimensions, dim_values) {
+clover.intFun.plot.latv.zlev.mon.time <- function(ncFileName, data, v, long_name, units, time, dim_values) {
   my.title <- paste0(long_name, " in ", units, " (", min(time), "-", max(time), ")")
 
   # Dimensions:

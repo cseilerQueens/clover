@@ -10,7 +10,8 @@ clover.intFun.plot.doy.hour.lat.time(
   v,
   long_name,
   units,
-  time
+  time,
+  dim_values
 )
 }
 \description{

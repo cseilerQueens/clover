@@ -3,7 +3,7 @@
 #' @description Internal function used in clover.plot()
 #' @export
 
-clover.intFun.plot.doy.lat.time <- function(ncFileName, data, v, long_name, units, time) {
+clover.intFun.plot.doy.lat.time <- function(ncFileName, data, v, long_name, units, time, dim_values) {
   my.title <- paste0(long_name, " in ", units, " (", min(time), "-", max(time), ")")
 
   # dims: [day, lat, year]

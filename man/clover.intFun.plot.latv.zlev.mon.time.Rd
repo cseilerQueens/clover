@@ -11,7 +11,6 @@ clover.intFun.plot.latv.zlev.mon.time(
   long_name,
   units,
   time,
-  dimensions,
   dim_values
 )
 }

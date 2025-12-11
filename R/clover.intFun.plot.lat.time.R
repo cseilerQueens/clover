@@ -4,7 +4,7 @@
 #' @export
 
 
-clover.intFun.plot.lat.time <- function(ncFileName, data, v, long_name, units, time) {
+clover.intFun.plot.lat.time <- function(ncFileName, data, v, long_name, units, time, dim_values) {
   my.title <- paste0(long_name, " in ", units, " (", min(time), "-", max(time), ")")
 
   # Annual values

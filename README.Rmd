@@ -1,0 +1,3 @@
+# Clover: Climber-X Output Visualization and Evaluation R Package
+
+This R package plots the output from the Earth System Model CLIMBER-X.
