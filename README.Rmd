@@ -4,9 +4,17 @@
 
 * Clover reads in netcdf files produced by CLIMBER-X, extracts data and meta data, and generates figures in PNG format
 
-* The main function is ```clover.plot(dataDir, ncFileName)```
+* The main functions are:
 
-* To plot all outputs from a CLIMBER-X simulation, loop this function over all netcdf files located in the model output folder, e.g.:
+* ```clover.table.ts(dataDir, ncFileName)```
+
+* ```clover.table(dataDir, ncFileName)```
+
+* ```clover.plot(dataDir, ncFileName)```
+
+* The first two functions simply generate tables that provide an overview.
+
+* The third function is the main plotting function. To plot all outputs from a CLIMBER-X simulation, loop this function over all netcdf files located in the model output folder, e.g.:
 
 ```{r}
 # Load Clover
