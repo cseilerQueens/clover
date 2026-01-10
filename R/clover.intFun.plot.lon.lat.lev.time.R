@@ -3,13 +3,13 @@
 #' @description Internal function used in clover.plot()
 #' @export
 
-clover.intFun.plot.lon.lat.lev.month.time <- function(ncFileName, data, v, long_name, units, time, dimensions, dim_values) {
+clover.intFun.plot.lon.lat.lev.time <- function(ncFileName, data, v, long_name, units, time, dimensions, dim_values) {
   my.title <- paste0(long_name, " in ", units, " (", min(time), "-", max(time), ")")
 
   # Dimensions:
-  # dim(data) gives 72 36 23 13 10
-  data.yr <- data[, , , 13, ]
-  data.mean <- apply(data.yr, MARGIN = c(1, 2, 3), FUN = mean, na.rm = TRUE)
+  # > dim(data)
+  # [1] 72 36 23 10
+  data.mean <- apply(data, MARGIN = c(1, 2, 3), FUN = mean, na.rm = TRUE)
 
   lat <- dim_values$lat
   lon <- dim_values$lon

@@ -11,6 +11,7 @@ clover.intFun.plot.doy.hour.lat.time(
   long_name,
   units,
   time,
+  dimensions,
   dim_values
 )
 }

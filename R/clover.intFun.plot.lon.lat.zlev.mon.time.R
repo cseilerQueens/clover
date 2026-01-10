@@ -46,6 +46,7 @@ clover.intFun.plot.lon.lat.zlev.mon.time <- function(ncFileName, data, v, long_n
     xlab = "Latitude", ylab = "Height (m)",
     main = "DJF"
   )
+  contour(lat, zlev, djf.zonal, add = TRUE)
   grid()
 
   fields::image.plot(lat, zlev, jja.zonal,
@@ -54,6 +55,7 @@ clover.intFun.plot.lon.lat.zlev.mon.time <- function(ncFileName, data, v, long_n
     xlab = "Latitude", ylab = "Height (m)",
     main = "JJA"
   )
+  contour(lat, zlev, jja.zonal, add = TRUE)
   grid()
 
   mtext(my.title,

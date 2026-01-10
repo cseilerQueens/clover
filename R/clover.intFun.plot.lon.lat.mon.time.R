@@ -4,7 +4,7 @@
 #' @export
 
 
-clover.intFun.plot.lon.lat.mon.time <- function(ncFileName, data, v, long_name, units, time, dim_values) {
+clover.intFun.plot.lon.lat.mon.time <- function(ncFileName, data, v, long_name, units, time, dimensions, dim_values) {
   # Annual values
   data.yr <- data[, , 13, ]
 
@@ -92,8 +92,9 @@ clover.intFun.plot.lon.lat.mon.time <- function(ncFileName, data, v, long_name, 
     main = my.title
   )
   maps::map("world", add = TRUE, interior = FALSE, resolution = 0.5)
-  abline(v = c(-90, 0, 90), lty = 3)
-  abline(h = c(66.5, 23.5, -23.5, -66.5), lty = 3)
+  # abline(v = c(-90, 0, 90), lty = 3)
+  # abline(h = c(66.5, 23.5, -23.5, -66.5), lty = 3)
+  grid()
   dev.off()
 
   # Annual mean time series

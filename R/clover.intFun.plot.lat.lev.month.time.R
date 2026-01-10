@@ -3,7 +3,7 @@
 #' @description Internal function used in clover.plot()
 #' @export
 
-clover.intFun.plot.latv.zlev.mon.time <- function(ncFileName, data, v, long_name, units, time, dimensions, dim_values) {
+clover.intFun.plot.lat.lev.month.time <- function(ncFileName, data, v, long_name, units, time, dimensions, dim_values) {
   my.title <- paste0(long_name, " in ", units, " (", min(time), "-", max(time), ")")
 
   # Dimensions:
@@ -20,8 +20,14 @@ clover.intFun.plot.latv.zlev.mon.time <- function(ncFileName, data, v, long_name
   djf.mean <- apply(data.djf, c(1, 2), mean, na.rm = TRUE)
   jja.mean <- apply(data.djf, c(1, 2), mean, na.rm = TRUE)
 
-  latv <- dim_values$latv
-  zlevw <- dim_values$zlevw
+
+  djf.mean <- djf.mean[, ncol(djf.mean):1]
+  jja.mean <- djf.mean[, ncol(jja.mean):1]
+
+  lat <- dim_values$lat
+  lev <- dim_values$lev
+
+  lev <- (-1) * rev(lev)
 
   # Common z-limits
   zlim <- range(djf.mean, jja.mean, na.rm = TRUE)
@@ -31,22 +37,22 @@ clover.intFun.plot.latv.zlev.mon.time <- function(ncFileName, data, v, long_name
 
   par(mfrow = c(2, 1), oma = c(0, 0, 2, 0), mar = c(4, 4, 2, 4))
 
-  fields::image.plot(latv, zlevw, djf.mean,
+  fields::image.plot(lat, lev, djf.mean,
     zlim = zlim,
     col = viridis::viridis(50),
-    xlab = "Latitude", ylab = "Height (m)",
+    xlab = "Latitude", ylab = "Depth (m)",
     main = "DJF"
   )
-  contour(latv, zlevw, djf.mean, add = TRUE)
+  contour(lat, lev, djf.mean, add = TRUE)
   grid()
 
-  fields::image.plot(latv, zlevw, jja.mean,
+  fields::image.plot(lat, lev, jja.mean,
     zlim = zlim,
     col = viridis::viridis(50),
-    xlab = "Latitude", ylab = "Height (m)",
+    xlab = "Latitude", ylab = "Depth (m)",
     main = "JJA"
   )
-  contour(latv, zlevw, jja.mean, add = TRUE)
+  contour(lat, lev, djf.mean, add = TRUE)
   grid()
 
   mtext(my.title,

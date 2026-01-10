@@ -11,6 +11,7 @@ clover.intFun.plot.lon.lat.mon.time(
   long_name,
   units,
   time,
+  dimensions,
   dim_values
 )
 }

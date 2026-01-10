@@ -3,7 +3,7 @@
 #' @description Internal function used in clover.plot()
 #' @export
 
-clover.intFun.plot.mon.time <- function(ncFileName, data, v, long_name, units, time, dim_values) {
+clover.intFun.plot.mon.time <- function(ncFileName, data, v, long_name, units, time, dimensions, dim_values) {
   # annual mean: row 13
   annual_data <- data[13, ]
 
