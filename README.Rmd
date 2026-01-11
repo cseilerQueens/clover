@@ -4,6 +4,13 @@
 
 * A demo of Clover can be accessed here: https://storage.googleapis.com/clover-demo/index.html
 
+* To install Clover, run to following lines in your R console:
+
+```{r, eval = FALSE, echo = TRUE}
+install.packages("remotes")
+remotes::install_github("cseilerQueens/clover", ref = "main", dependencies = TRUE)
+```
+
 * Clover reads in netcdf files produced by CLIMBER-X, extracts data and meta data, and generates figures in PNG format
 
 * The main functions are:
@@ -18,7 +25,7 @@
 
 * The third function is the main plotting function. To plot all outputs from a CLIMBER-X simulation, loop this function over all netcdf files located in the model output folder, e.g.:
 
-```{r}
+```{r, eval = FALSE, echo = TRUE}
 # Load Clover
 library(clover)
 
@@ -41,4 +48,12 @@ for (i in nc_files) {
 
 * Note that CLIMBER-X output includes many variables with different dimension combinations. If a variable has dimensions for which no plotting function has been defined, a message will be printed, for example: “betas was not plotted because no function exists for the dimensions lon, lat, nsurf, month, time.” I will add additional plotting functions over time.
 
+* When programming Clover, I prioritized simple, fast, and maintainable code over the aesthetics of plots. The goal is to provide a quick overview of model results rather than produce publication-ready figures.
+
 * Clover is not yet suitable for comparing results from multiple model runs or against observations, but I plan to add this functionality in the future.
+
+* Reminder for myself: to convert this document from .Rmd to .md, run:
+
+```{r, eval = FALSE, echo = TRUE}
+rmarkdown::render("README.Rmd", output_format = "github_document")
+```

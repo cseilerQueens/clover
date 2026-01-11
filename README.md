@@ -7,6 +7,13 @@
 -   A demo of Clover can be accessed here:
     <https://storage.googleapis.com/clover-demo/index.html>
 
+-   To install Clover, run to following lines in your R console:
+
+``` r
+install.packages("remotes")
+remotes::install_github("cseilerQueens/clover", ref = "main", dependencies = TRUE)
+```
+
 -   Clover reads in netcdf files produced by CLIMBER-X, extracts data
     and meta data, and generates figures in PNG format
 
@@ -56,6 +63,17 @@ for (i in nc_files) {
     dimensions lon, lat, nsurf, month, time.” I will add additional
     plotting functions over time.
 
+-   When programming Clover, I prioritized simple, fast, and
+    maintainable code over the aesthetics of plots. The goal is to
+    provide a quick overview of model results rather than produce
+    publication-ready figures.
+
 -   Clover is not yet suitable for comparing results from multiple model
     runs or against observations, but I plan to add this functionality
     in the future.
+
+-   Reminder for myself: to convert this document from .Rmd to .md, run:
+
+``` r
+rmarkdown::render("README.Rmd", output_format = "github_document")
+```
