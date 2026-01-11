@@ -1,0 +1,358 @@
+---
+title: "CLOVER"
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+    number_sections: false
+---
+
+```{r setup, include=FALSE}
+# module load  StdEnv/2023  gcc/12.3  udunits/2.2.28  hdf/4.2.16  gdal/3.7.2  r/4.5.0
+# styler::style_file("clover-report.Rmd")
+.libPaths("/home/cseiler/clover/renv/library/linux-almalinux-9.7/R-4.5/x86_64-pc-linux-gnu/")
+library(clover)
+dataDir <- "/home/cseiler/projects/def-cseiler-ab/cseiler/CLIMBER-X/output/bench_v1.4.0/preind"
+nc_files <- list.files(dataDir, pattern = "\\.nc$", full.names = TRUE)
+ncFileNames <- list.files(dataDir, pattern = "\\.nc$", full.names = FALSE)
+```
+
+# Atmosphere
+
+* atm.nc
+* atm_ts.nc
+
+## Tables
+   
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+clover::clover.table.ts(dataDir, ncFileName = "atm_ts.nc")
+clover::clover.table(dataDir, ncFileName = "atm.nc")
+```
+
+## Figures
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^atm.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+# Ocean
+* ocn.nc, ocn_ts.nc
+
+## Tables 
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+clover::clover.table.ts(dataDir, ncFileName = "ocn_ts.nc")
+clover::clover.table(dataDir, ncFileName = "ocn.nc")
+```
+
+## Figures
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^ocn.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+# Sea ice
+* sic.nc, sic_ts.nc
+
+## Tables
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+clover::clover.table.ts(dataDir, ncFileName = "sic_ts.nc")
+clover::clover.table(dataDir, ncFileName = "sic.nc")
+```
+
+## Figures
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^sic.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+# Land
+* lnd_carb.nc
+* lnd_lake.nc
+* lnd_soil.nc
+* lnd_surf.nc
+* lnd_ts.nc
+
+## Tables
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+if ("lnd_ts.nc" %in% ncFileNames) {
+  clover::clover.table.ts(dataDir, ncFileName = "lnd_ts.nc")
+  clover::clover.table(dataDir, ncFileName = "lnd_carb.nc")
+  clover::clover.table(dataDir, ncFileName = "lnd_lake.nc")
+  clover::clover.table(dataDir, ncFileName = "lnd_soil.nc")
+  clover::clover.table(dataDir, ncFileName = "lnd_surf.nc")
+}
+```
+
+## Figures
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^lnd_carb.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^lnd_lake.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^lnd_soil.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^lnd_surf.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+# Ocean biogeochemistry
+* bgc.nc
+* bgc_ts.nc
+
+## Tables
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+if ("bgc_ts.nc" %in% ncFileNames) {
+  clover::clover.table.ts(dataDir, ncFileName = "bgc_ts.nc")
+  clover::clover.table(dataDir, ncFileName = "bgc.nc")
+}
+```
+
+## Figures
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^bgc.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+# Atmospheric CO2 and CH4
+* co2_ts.nc
+
+## Tables
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+if ("co2_ts.nc" %in% ncFileNames) {
+  clover::clover.table.ts(dataDir, ncFileName = "co2_ts.nc")
+}
+if ("ch4_ts.nc" %in% ncFileNames) {
+  clover::clover.table.ts(dataDir, ncFileName = "ch4_ts.nc")
+}
+```
+
+# Geography
+* geo_hires.nc
+* geo.nc
+* geo_ts.nc
+
+## Tables
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+# clover::clover.table.ts(dataDir, ncFileName = "geo_ts.nc") # There is no value for time in my file
+clover::clover.table(dataDir, ncFileName = "geo.nc")
+clover::clover.table(dataDir, ncFileName = "geo_hires.nc")
+```
+
+## Figures
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^geo.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^geo_hires.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+# Ice sheets
+* ice.nc
+* ice_ts.nc
+* smb.nc
+* smb_ts.nc
+* bmb.nc
+* bmb_ts.nc
+
+## Tables
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+if ("ice_ts.nc" %in% ncFileNames) {
+  clover::clover.table.ts(dataDir, ncFileName = "ice_ts.nc")
+  clover::clover.table(dataDir, ncFileName = "ice.nc")
+
+  clover::clover.table.ts(dataDir, ncFileName = "smb_ts.nc")
+  clover::clover.table(dataDir, ncFileName = "smb.nc")
+
+  clover::clover.table.ts(dataDir, ncFileName = "bmb_ts.nc")
+  clover::clover.table(dataDir, ncFileName = "bmb.nc")
+}
+```
+
+## Figures
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^ice.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^smb.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^bmb.nc.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+
+
+# cmn
+
+* cmn.nc
+* cmn_ts.nc
+
+## Tables
+   
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+clover::clover.table.ts(dataDir, ncFileName = "cmn_ts.nc")
+clover::clover.table(dataDir, ncFileName = "cmn.nc")
+```
+
+## Figures
+
+```{r, eval = TRUE, echo = FALSE, results='asis'}
+figs <- list.files("figs", pattern = "^cmn.*\\.png$", full.names = TRUE)
+for (f in figs) {
+  # make a safe anchor id by replacing non-alphanumeric characters
+  anchor <- gsub("[^a-zA-Z0-9_-]", "_", f)
+
+  # clickable heading
+  cat(sprintf('### <a id="%s"></a>%s\n\n', anchor, f))
+
+  # image
+  cat(sprintf('<img src="%s" style="max-width:900px; width:100%%; height:auto; margin-bottom:18px;">\n\n', f))
+}
+```
+

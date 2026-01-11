@@ -2,6 +2,8 @@
 
 * This R package plots the output from the Earth System Model CLIMBER-X
 
+* A demo of Clover can be accessed here: https://storage.googleapis.com/clover-demo/index.html
+
 * Clover reads in netcdf files produced by CLIMBER-X, extracts data and meta data, and generates figures in PNG format
 
 * The main functions are:
@@ -33,7 +35,7 @@ for (i in nc_files) {
 }
 ```
 
-* The PNG files can be organized using bookdown
+* Once all PNG files have been created, knit ```clover-report.Rmd``` in order to organize figures and tables:
 
 * The plotting function ```clover.plot(dataDir, ncFileName = i)``` automatically detects the dimensions of each variable and calls a plotting function designed for that specific dimension set.
 
